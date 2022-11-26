@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+
+  <body>
+    
+    <main>
+      <div>
+        <a href="/animal/new"><button>Create A New Animal</button></a>
+      
+      <ul style="list-style:none; margin-left:25px">
+        <% for(let i =0; i< Animals.length; i++) { %> 
+          <li>
+            <a href="/animal/<%=Animals[i].id%>"><%=Animals[i].species%></a>
+          </li>
+          <li>
+            <span style="font-weight: bold;">Location:</span> <%=Animals[i].location %>
+          </li>
+          <li>
+            <span style="font-weight: bold;">Extict:</span> <%= Animals[i].extinct ? "Yes" : "No" %>
+          </li>
+          <li>
+            <span style="font-weight: bold;">Life Expectancy:</span> <%= Animals[i].lifeExpectancy%>
+          </li>
+        <form action="/animal/<%=Animals[i].id %>?_method=DELETE" method="POST">
+          <input type="submit" value="Working Index ejs Delete">
+      </form>
+    <% } %>
+  </ul>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("./partials/head.ejs") %>
+
+  <body>
+    
+    <main>
+      <div>
+          <div>
+          <h2> <%= Animals.species %> </h2>
+          <span style="font-weight:bold;">Location: </span> <%= Animals.location %></BR>
+          <span style="font-weight:bold;">Extict: </span> <%= Animals.extinct ? "Yes" : "No" %> </BR>
+          <span style="font-weight:bold;">Life Expectancy:</span> <%= Animals.lifeExpectancy%></BR>
+        </div>
+        <div style="display: flex; justify-content:center;">
+        <a style="margin: 10px;" href="/animal/<%= Animals._id %>/edit"><button>Edit</button></a>
+          <form style="margin: 10px;" action="/animal/<%= Animals._id %>?_method=DELETE" method="POST">
+            <input type="submit" value="Delete"/>
+          </form>
+          <a style="margin: 10px;" href="/animal/"><button>Back to Main</button></a>
+        </div>
+
+      </div>
+    </main>
+  </body>
+</html>
+
