@@ -1,0 +1,65 @@
+
+
+
+
+body{
+  background-image: url(https://img.freepik.com/free-vector/animals-theme-template-vector-illustration_53876-56693.jpg?w=2000);
+}
+
+h1{
+  display: flex;
+  justify-content: center;
+  margin: 150px 50px 5px 5px;
+  font-size: 75px;
+}
+
+.main{
+  display: flex;
+  justify-content: center;
+  align-items:flex-start;
+}
+.new{
+  float:right;
+  
+}
+.create{
+  display: flex;
+  justify-content: center;
+  align-items:flex-start;
+}
+
+a{
+  font-size: 40px;
+}
+
+.animal{
+  display: flex;
+  justify-content: center;
+  align-items:flex-start;
+}
+
+.newAnimal{
+  display: flex;
+  justify-content: center;
+  align-items:flex-start;
+}
+
+.single{
+  display: flex;
+  justify-content: center;
+  align-items:flex-start;
+
+}
+.showAnimal{
+  display: flex;
+  justify-content: center;
+  align-items:flex-start;
+}
+
+.buttons{
+
+}
+
+span{
+  font-weight: bold;
+}
