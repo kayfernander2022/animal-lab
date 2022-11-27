@@ -59,7 +59,7 @@ app.get("/animal", (req, res) => {
 //NEW **
 // /fruits/new
 app.get("/animal/new", (req, res) => {
-  res.render("new.ejs")//just sending back a form for the user to fill in.
+  res.render("new.ejs")
 })
 
 //DELETE ROUTE
@@ -68,7 +68,7 @@ app.delete("/animal/:id", (req, res) => {
   const id = req.params.id
   // delete the animal
   Animal.findByIdAndDelete(id, (err, animal) => {
-      // redirect user back to index page
+      
       res.redirect("/animal")
   })
 })
@@ -76,16 +76,13 @@ app.delete("/animal/:id", (req, res) => {
 //UPDATE ROUTE
 app.put("/animal/:id", (req, res) => {
   // get the id from params
-  const id = req.params.id//we used req.params.id multiple times in this route so we put in a variable called id for less code.
-  // check if the readyToEat property should be true or false
+  const id = req.params.id
   req.body.extinct = req.body.extinct === "on" ? true : false
   // update the animal
-  Animal.findByIdAndUpdate(id, req.body, {new: true}, (err, animal) => {//send the "new" updated animal. We will get the old one if we miss this line.
+  Animal.findByIdAndUpdate(id, req.body, {new: true}, (err, animal) => {
       // redirect user back to main page with animal 
       res.redirect("/animal")
-      //OR
-      //see the updateds to the fruit on its own page
-      //res.redirect(`/fruits/${req.params.id}`)
+      
   })
 })
 
@@ -95,11 +92,9 @@ app.post("/animal", (req, res) => {
   console.log("extinct: " + req.body.extinct);
   req.body.extinct = req.body.extinct === "on" ? true : false;
   console.log("new extict: " + req.body.extinct);
-  // add username to req.body to track related user
-  //req.body.username = req.session.username
-  // create the new fruit
+  
   Animal.create(req.body, (err, animals) => {
-    // redirect the user back to the main fruits page after fruit created
+    
     res.redirect("/animal");
   });
 });
@@ -110,10 +105,10 @@ app.get("/animal/:id/edit", (req, res) => {
   // get the id from params
   const id = req.params.id
   // get the animal from the database
-  Animal.findById(id, (err, animal) => {//give back the error or the found animal. eg of an ID 735546267384563
+  Animal.findById(id, (err, animal) => {
     console.log(err);
-      // render template and send it animal
-      res.render("edit.ejs", {Animal:animal})//render edit.ejs form and allow it the fruit data//rendering the path not url so no / needed before fruits
+      
+      res.render("edit.ejs", {Animal:animal})
   })
 })
 
@@ -123,25 +118,14 @@ app.get("/animal/:id/edit", (req, res) => {
 app.get("/animal/:id", (req, res) => {
   // get the id from params
   const id = req.params.id
-  // find the particular animal from the database
+  
   Animal.findById(id, (err, animal) => {
       // render the template with the data from the database
       res.render("show.ejs", {Animals:animal})
       //res.json(animal)
   })
 })
-//test
-//app.get("/animal/:id", (req, res) => {
-  // get the id from params
-  //const id = req.params.id
-  // find the particular animal from the database
- // Animal.findById(req.params.id)
-      // render the template with the data from the database
-      //res.render("show.ejs", {Animals:animal})
- //     .then((animal) => {
- //     res.json(animal)
- // })
-//})
+
 
 //Listener
 const PORT = process.env.PORT
